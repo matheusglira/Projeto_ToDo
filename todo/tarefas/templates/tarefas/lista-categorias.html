@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block body %}
+<form action="{% url 'tarefas:nova_categoria' %}" method="post">
+ {% csrf_token %}
+  <div class="container">
+    <h2> Lista de Categorias</h2>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>Categoria</th>
+          <th>Descrição</th>
+          <th colspan="2" style="text-align:center">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for c in categorias %}
+          <tr>
+            <td>{{ c.nome }}</td>
+            <td>{{ c.descricao }}</td>
+            <td><a href="{% url 'tarefas:editar_categoria' c.id %}" class="btnAcao">Editar</a></td>
+            <td><a href="{% url 'tarefas:delete_categoria' c.id %}" class="btnAcao">Excluir</a></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <!-- <a href="#" class="btnAdicionarCategoria">Adicionar Categoria</a> -->
+      <input type="submit" value="Adicionar Categoria" class="btn">
+  </div>
+</form>
+{% endblock body%}

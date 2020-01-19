@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block body %}
+  <form method="post" action="" name="formCategoria">
+    {% csrf_token %}
+    <h2>Nova Categoria</h2>
+      <p class="nome">
+        <label for="{{ form.nome.id_for_label }}">Nome:</label>
+        {{ form.nome }}
+      </p>
+
+      <p class="descricao">
+        <label for="{{ form.descricao.id_for_label }}">Descrição:</label><br/>
+        {{ form.descricao }}
+      </p>
+
+      <p class="btnSalvar">
+        <input type="submit" name="" value="Salvar Categoria" class="btn">
+      </p>
+  </form>
+{% endblock body %}

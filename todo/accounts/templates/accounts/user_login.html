@@ -1,0 +1,35 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static "css/signin.css" %}">
+  </head>
+  <body>
+
+    <div class="container">
+      <form class="form-signin" method="post">
+        <h2 class="form-signin-heading">Login</h2>
+        {% if messages %}
+          <div class="alert alert-dark" role="alert">
+              {% for message in messages %}
+                {{ message }}
+              {% endfor %}
+          </div>
+        {% endif %}
+        {% csrf_token %}
+
+        <label for="username" class="sr-only">Usuário</label>
+        <input type="text" id="username" name="username" class="form-control" placeholder="Informe o usuário..." required autofocus>
+        <label for="password" class="sr-only">Senha</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Informe a senha do usuário..."required>
+        <input type="submit" value="Entrar" class="btn btn-lg btn-primary btn-block">
+        <a href="{% url 'accounts:add_user' %}" class="btn btn-lg btn-info btn-block">Não tem cadastro?</a>
+      </form>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+  <form method="post" action="" name="formTarefa">
+    {% csrf_token %}
+    <h2>Nova Tarefa</h2>
+      <p class="nome">
+        <label for="{{ form.nome.id_for_label }}">Nome:</label>
+        {{ form.nome }}
+      </p>
+
+      <p class="descricao">
+        <label for="{{ form.descricao.id_for_label }}">Descrição:</label><br/>
+        {{ form.descricao }}
+      </p>
+
+      <p class="data_final">
+        <label for="{{ form.data_final.id_for_label }}">Data Final:</label><br/>
+        {{ form.data_final }}
+      </p>
+
+      <p class="prioridade">
+        <label for="{{ form.prioridade.id_for_label }}">Prioridade:</label><br/>
+        {{ form.prioridade }}
+      </p>
+
+      <p class="categoria">
+        <label for="{{ form.categoria.id_for_label }}">Categoria:</label><br/>
+        {{ form.categoria }}
+      </p>
+
+      <p class="btnSalvar">
+        <input type="submit" name="" value="Salvar Tarefa" class="btn">
+      </p>
+  </form>
+
+{% endblock body %}
